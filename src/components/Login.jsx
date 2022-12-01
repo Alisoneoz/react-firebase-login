@@ -1,5 +1,19 @@
 export const Login = () => {
+  
+  const [ user, setUser] = useState({
+    email:'',
+    password:''
+  })
+
   return (
-    <div>Login</div>
+    <div>
+      
+      <form>
+        <input type='email' name='email' id='email'></input>
+
+        <input type='password' name='password'  id='password'></input>
+      </form>
+
+    </div>
   )
 }
