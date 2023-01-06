@@ -22,33 +22,36 @@ export function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setError('')
     try {
       await signUp(user.email, user.password);
-      navigate('/')
-    } catch (error){
-      setError(error.message);
-      console.error(error.message);
+    } catch (err){
+      setError(err.message);
+      console.error(err.message);
     }
+    navigate('/')
   }
 
   return (
     <div>
       { error && <p> {error} </p>}
-      
-      <form onSubmit={handleSubmit}>
-      <label htmlFor='email'>Email</label>
-        <input 
-          type='text' 
-          name='email' 
-          placeholder='youremail@company.com' 
-          onChange={handleChange}/>
+      <form onSubmit={handleSubmit} >
+        <div className="email">
+          <label htmlFor='email'>Email</label>
+          <input 
+            type='email' 
+            name='email' 
+            placeholder='youremail@company.com' 
+            onChange={handleChange}/>
+        </div>
       
         <label>Password</label>
         <input 
           type='password' 
           name='password' 
           id='password' 
-          onChange={ handleChange}/>
+          onChange={ handleChange}
+          placeholder='******'/>
 
         <button>Register</button>
       </form>
